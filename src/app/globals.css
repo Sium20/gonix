@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html, body {
+    @apply bg-bg text-fg antialiased;
+  }
+
+  body {
+    font-feature-settings: "ss01", "ss02", "cv11";
+  }
+
+  ::selection {
+    @apply bg-accent/30 text-fg;
+  }
+
+  /* Subtle scrollbar — dark thumb on cream */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(42,33,24,0.18); border-radius: 8px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(42,33,24,0.30); }
+}
+
+@layer components {
+  .container-page {
+    @apply max-w-7xl mx-auto px-4 sm:px-6;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #D44C5A 0%, #E88A95 50%, #D44C5A 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .border-gold-gradient {
+    background: linear-gradient(135deg, rgba(212,76,90,0.5), rgba(212,76,90,0.12));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    padding: 1px;
+    border-radius: 0.75rem;
+  }
+
+  .prose-post {
+    @apply text-fg leading-relaxed;
+  }
+  .prose-post p {
+    @apply my-5 text-[15px] md:text-base;
+  }
+  .prose-post h2 {
+    @apply font-serif text-2xl md:text-3xl tracking-tight mt-10 mb-4;
+  }
+  .prose-post h3 {
+    @apply font-serif text-xl md:text-2xl tracking-tight mt-8 mb-3;
+  }
+  .prose-post ul {
+    @apply my-5 space-y-2 pl-1;
+  }
+  .prose-post ul li {
+    @apply relative pl-5 text-[15px] md:text-base;
+  }
+  .prose-post ul li::before {
+    content: "—";
+    @apply absolute left-0 text-fg-dim;
+  }
+  .prose-post blockquote {
+    @apply my-6 pl-4 border-l-2 border-accent/40 text-fg-muted italic;
+  }
+  .prose-post strong {
+    @apply text-fg font-semibold;
+  }
+  .prose-post em {
+    @apply text-fg-muted;
+  }
+  .prose-post a {
+    @apply text-accent hover:underline break-words;
+  }
+  .prose-post code {
+    @apply px-1.5 py-0.5 rounded bg-bg-card border border-line text-[13px] font-mono;
+  }
+}
